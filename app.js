@@ -1,3 +1,4 @@
+//Import required modules
 const express = require("express");
 const path = require("path");
 const dotenv = require("dotenv");
@@ -40,12 +41,15 @@ app.use(
   "/components",
   express.static(path.join(__dirname, "views/components"))
 );
+const bookRoutes = require("./routes/bookRoutes");
+
 
 // routes
 app.use("/", indexRoutes);
 app.use("/auth", authRoutes);
 app.use("/", homeRoutes);
 app.use("/", profileRoutes);
+app.use("/", bookRoutes);
 
 //for db connection
 app.get("/db-test", async (req, res) => {
